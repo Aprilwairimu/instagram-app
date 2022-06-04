@@ -4,9 +4,9 @@ from django.db import models
 
 class Image(models.Model):
     image = models.ImageField (null=False, blank=False)
-    name = models.CharField(max_length=100, null=False, blank=False)
+    imagename = models.CharField(max_length=100, null=False, blank=False)
     caption = models.ImageField (null=False, blank=False)
-    profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    # profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
     likes = models.ImageField (null=False, blank=False)
     comments = models.CharField(max_length=100, null=False, blank=False)
 
