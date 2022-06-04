@@ -1,7 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404
-from djando.contrib.auth import login,authenticate
-from djando.contrib.auth import UserCreationForm
+from .forms import RegisterForm
 # Create your views here.
 
 def home(request):
@@ -9,11 +8,11 @@ def home(request):
 
 def register(request):
     if response.method == "POST":
-        form = UserCreationForm(response.POST)
+        form = RegisterForm(response.POST)
         if form.is_valid():
             form.save()
 
         return redirect("/home")
     else:
-        form = UserCreationForm()
+        form = RegisterForm()
     return render(request,'register/register.html', {"form":form})
