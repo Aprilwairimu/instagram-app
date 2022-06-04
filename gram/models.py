@@ -4,8 +4,8 @@ from django.db import models
 
 class Image(models.Model):
     image = models.ImageField (null=False, blank=False)
-    imagename = models.CharField(max_length=100, null=False, blank=False)
-    caption = models.ImageField (null=False, blank=False)
+    image_name = models.CharField(max_length=100, null=False, blank=False)
+    image_caption = models.ImageField (null=False, blank=False)
     # profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
     likes = models.ImageField (null=False, blank=False)
     comments = models.CharField(max_length=100, null=False, blank=False)
@@ -21,9 +21,13 @@ class Image(models.Model):
 
 
 class Profile(models.Model):
-    # Profile = 
-    Bio = models.CharField(max_length=100, null=False, blank=False)
+    username = models.CharField(max_length=100, null=False, blank=False)
+    profile =  models.ImageField (null=False, blank=False)
+    Bio = models.TextField(max_length=100, null=False, blank=False)
 
+    # def__str__(self):
+    #     return self.name
+        
     def save_profile(self):
         self.save()
     
@@ -33,7 +37,11 @@ class Profile(models.Model):
     def update_profile(self):
         self.update()
 
-    @classmethod
-    def search_by_name(cls,search_term):
-        gallery = cls.objects.filter(name__icontains=search_term)
-        return search.html
+class Comment(models.Model):
+    comment = models.CharField(max_length=100, null=False, blank=False)
+    image = models.ForeignKey(Image,on_delete=models.CASCADE,null=False, blank=False )
+
+    # @classmethod
+    # def search_by_name(cls,search_term):
+    #     gallery = cls.objects.filter(name__icontains=search_term)
+    #     return search.html
