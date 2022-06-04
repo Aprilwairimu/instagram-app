@@ -32,3 +32,8 @@ class Profile(models.Model):
 
     def update_profile(self):
         self.update()
+
+    @classmethod
+    def search_by_name(cls,search_term):
+        gallery = cls.objects.filter(name__icontains=search_term)
+        return search.html
