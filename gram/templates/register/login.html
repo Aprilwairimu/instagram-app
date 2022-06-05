@@ -1,4 +1,4 @@
-{%extends "register/base.html"%}
+{%extends "base.html"%}
 {% block content %}
 <div class="container">
     <div class="row">
@@ -17,7 +17,7 @@
 
                     <form action="/accounts/login/" method="post">
                         {% csrf_token %}
-                        {% bootstrap_form form%}
+                        {{form.as_p}}
 
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary btn-sm" value="Login">
