@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns=[
     path('',views.home, name='home',),
@@ -9,7 +11,8 @@ urlpatterns=[
     path('post/',views.post_pic,name='post'),
     path('profile/',views.profile, name='profile',),
     path('comment/<str:pk>/', views.comment, name='comment'),
+    # path('photo/<pk>/',views.ViewPhoto, name='photo',),
     path('like/<str:pk>/', views.like, name='like_post'),
     path('search/',views.search_results, name='search',),
     
-]
+]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

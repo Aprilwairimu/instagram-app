@@ -6,7 +6,7 @@
 
 
 ### PROJECT DESCRIPTION
-This is an Instagram application that is accessible to users on both desktop and mobile formats.
+This is an Django Instagram application that is accessible to users on both desktop and mobile formats.
 It has a solid authentication system that allows users to sign in or register into the application.
 
 

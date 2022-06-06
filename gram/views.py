@@ -12,7 +12,7 @@ def home(request):
         if form.is_valid():
             form.save()
 
-    return render(request,'home.html')
+    return render(request,'home.html',{"posts":posts,"form":form})
 
 def logout(request):
     logout(request)
@@ -64,7 +64,13 @@ def post_pic(request):
         messages.success(request,('picture posted'))
     return render(request,'post.html',{"form":form,"profile":profile})
 
-        
+def viewImage(request, pk):
+    post = get_object_or_404(Photo, id=pk)
+    image = Image.objects.get(id=pk)
+    total_likes = stuff.total_likes()
+
+    return render(request, 'image.html', {'image': image, 'post': post, 'total_likes': 
+    total_likes})
 
 def comment(request):
     comment = comment.objects.all()

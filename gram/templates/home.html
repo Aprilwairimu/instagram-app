@@ -3,5 +3,13 @@
 
 {% block content %}
 
+{% for post in posts%}
+{{post.image}}
+<br>
+{{post.image_name}}
+<br>
+{{post.image_caption}}
+{% endfor%}
+
 
 {% endblock%}
