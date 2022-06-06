@@ -3,10 +3,15 @@
 {% block content %}
 <div class="form">
     <h1>Post</h1>
-    <form action="{% url 'post' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button type="button" value="submit" class="btn btn-success">Submit</button>
-    </form>
+    <div>
+        <form action="{% url 'post' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+             {{form.as_p}} 
+            <button type="button" class="btn btn-success">Submit</button>
+                <!-- <a href="{% url 'home' %}"type="button" value="submit" class="btn btn-success">Submit</a> -->
+        
+        </form>
+    </div>
+   
 </div>
 {% endblock %}

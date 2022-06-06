@@ -2,24 +2,6 @@
 {% extends "base.html"%}
 
 {% block content %}
-<section id="land" class="p-5 home-bg">
-    <div class="container">
-        <div class="row align-items-center justify-content-between">
-            <div class="col-md">
-                <img src="" class="img-fluid" alt="">
-            </div>
-        </div>
 
 
-        {% if request.user.username %}
-        <p>The current User is {{user.username}}</p>
-        {% else %}
-        <p>No user is currently logged in</p>
-        {% endif %}
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-</section>
 {% endblock%}
