@@ -36,6 +36,7 @@ class Profile(models.Model):
         self.update()
 
 class Comment(models.Model):
+    author = models.CharField(max_length=100,null=False)
     comment = models.CharField(max_length=100, null=False, blank=False)
     image = models.ForeignKey(Image,on_delete=models.CASCADE,null=False, blank=False )
 

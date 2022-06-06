@@ -1,11 +1,17 @@
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404
-from .forms import RegisterForm,LoginForm,UploadImageForm
+from .forms import RegisterForm,LoginForm,UploadImageForm,CommentForm
 from urllib import request
 from .models import *
 # Create your views here.
 
 def home(request):
+    posts = Image.objects.all()
+    form = CommentForm
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+
     return render(request,'home.html')
 
 def logout(request):
@@ -69,8 +75,11 @@ def comment(request):
             messages.success(request,('comment posted'))
             return render(request,'home.html',{"post":post})
 
-# def Likes(request,pk):
-#     post = get_object_or_404(Image,id)
+def like(request, pk):
+    post = get_object_or_404(Photo, id=request.GET.get('post_id'))
+    post.Likes.add(request.user)   
+
+    return HttpResponseRedirect(reverse('view', args=[str(pk)]))
 
 def search_results(request):
 
