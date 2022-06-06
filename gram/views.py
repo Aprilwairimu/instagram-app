@@ -64,8 +64,8 @@ def post_pic(request):
         messages.success(request,('picture posted'))
     return render(request,'post.html',{"form":form,"profile":profile})
 
-def viewImage(request, pk):
-    post = get_object_or_404(Photo, id=pk)
+def ViewImage(request, pk):
+    post = get_object_or_404(Image, id=pk)
     image = Image.objects.get(id=pk)
     total_likes = stuff.total_likes()
 
@@ -82,10 +82,11 @@ def comment(request):
             return render(request,'home.html',{"post":post})
 
 def like(request, pk):
-    post = get_object_or_404(Photo, id=request.GET.get('post_id'))
+    post = get_object_or_404(Image, id=request.GET.get('post_id'))
     post.Likes.add(request.user)   
 
     return HttpResponseRedirect(reverse('view', args=[str(pk)]))
+
 
 def search_results(request):
 

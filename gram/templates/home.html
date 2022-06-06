@@ -2,13 +2,18 @@
 {% extends "base.html"%}
 
 {% block content %}
+<div class="home">
+    {% for post in posts%}
+    {%if post.image%}
+  <img src="{{post.image.url}}" alt="" >
+  {%endif%}
+    <br>
+    {{post.image_name}}
+    <br>
+    {{post.image_caption}}
 
-{% for post in posts%}
-{{post.image}}
-<br>
-{{post.image_name}}
-<br>
-{{post.image_caption}}
+</div>
+
 {% endfor%}
 
 

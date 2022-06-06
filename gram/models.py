@@ -3,9 +3,9 @@ from django.db import models
 # Create your models here.
 
 class Image(models.Model):
-    image = models.ImageField (null=False, blank=False)
-    image_name = models.CharField(max_length=100, null=False, blank=False)
-    image_caption = models.CharField (max_length=100,null=False, blank=False)
+    image = models.ImageField ( upload_to='pictures/',null=True, blank=True)
+    image_name = models.CharField(max_length=100, null=True, blank=True)
+    image_caption = models.CharField (max_length=100,null=True, blank=True)
     
 
     def save_image(self):
@@ -19,10 +19,15 @@ class Image(models.Model):
 
 
 class Profile(models.Model):
-    username = models.CharField(max_length=100, null=False, blank=False)
-    profile =  models.ImageField (null=False, blank=False)
-    Bio = models.TextField(max_length=100, null=False, blank=False)
+    username = models.CharField(max_length=100, null=True, blank=True)
+    profile =  models.ImageField (null=True, blank=True)
+    Bio = models.TextField(max_length=100, null=True, blank=True)
 
+# @receiver(post_save, sender=User)
+# def update_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         UserProfile.objects.create(user=instance)
+#     instance.profile.save()
     # def__str__(self):
     #     return self.name
         
@@ -36,9 +41,9 @@ class Profile(models.Model):
         self.update()
 
 class Comment(models.Model):
-    author = models.CharField(max_length=100,null=False)
-    comment = models.CharField(max_length=100, null=False, blank=False)
-    image = models.ForeignKey(Image,on_delete=models.CASCADE,null=False, blank=False )
+    author = models.CharField(max_length=100,null=True)
+    comment = models.CharField(max_length=100, null=True, blank=True)
+    image = models.ForeignKey(Image,on_delete=models.CASCADE,null=True, blank=True)
 
 class Likes(models.Model):
     user = models.ForeignKey(Profile,on_delete=models.CASCADE)
