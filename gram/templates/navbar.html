@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg  bg-dark text-light">
     <div class="container-fluid">
+        <img src="../../static/images/icons8-instagram-64.png" class="img-fluid" alt="">
         <a class="navbar-brand" >INSTAGRAM APP</a>
         <a class="navbar-brand" href="/"><i class="fa-solid fa-house-chimney fa-2x"></i></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -14,23 +15,26 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'login' %}">Login</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'post' %}">Post</a>
                 </li>
             </ul>
  
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     Profile
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Upload Image</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'post' %}">post</a></li>
                     <li><a class="dropdown-item" href="#">Comments</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="{% url 'post' %}">Profile</a></li>
+                    
                 </ul>
-            </li> 
+            </li>  -->
             <form class="d-flex">
                 {% csrf_token %}
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

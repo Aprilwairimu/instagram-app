@@ -43,7 +43,7 @@ class Likes(models.Model):
     user = models.ForeignKey(Profile,on_delete=models.CASCADE)
     image = models.ForeignKey(Image,on_delete=models.CASCADE)
 
-    # @classmethod
-    # def search_by_name(cls,search_term):
-    #     gallery = cls.objects.filter(name__icontains=search_term)
-    #     return search.html
+    @classmethod
+    def search_by_username(cls,search_term):
+        gram = cls.objects.filter(username__icontains=search_term)
+        return gramm

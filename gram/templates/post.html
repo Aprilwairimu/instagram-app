@@ -1,19 +1,12 @@
 {% extends "base.html"%}
-{% block content %}
-<div class="col-md-9">
-    <div class="col-md-4">
-        <div class="card my-2">
-            <img class="image-thumbail" src="" alt="Card image cap">
 
-            <div class="card-body"></div>
-            <a href="{% %}" class="btn btn-primary">view</a>
-            
-        </div>
-    </div>
-    {% if empty %}
-    <h3>No photos...</h3>
-    {% endif %}
-    {% endfor %}
-</div>
+{% block content %}
+<div class="form">
+    <h1>Post</h1>
+    <form action="{% url 'post' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="button" value="submit" class="btn btn-success">Submit</button>
+    </form>
 </div>
 {% endblock %}

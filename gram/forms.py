@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django import forms
 from django.forms import ModelForm
+from .models import *
 
 
 class RegisterForm(UserCreationForm):
@@ -18,5 +19,5 @@ class LoginForm(forms.Form):
 
 class UploadImageForm(ModelForm):
     class Meta:
-        # model = Image
+        model = Image
         fields = ("image","image_name","image_caption")

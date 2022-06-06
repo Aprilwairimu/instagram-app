@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404
 from .forms import RegisterForm,LoginForm,UploadImageForm
 from urllib import request
+from .models import *
 # Create your views here.
 
 def home(request):
@@ -50,12 +51,14 @@ def profile(request):
 
 def post_pic(request):
     form = UploadImageForm(request.POST,request.FILES)
-    profile = profile.objects.all()
+    profile = Profile.objects.all()
     if request.method =='POST':
         if form.is_valid():
             form.save()
-            messages.success(request,('picture posted'))
-            return render(request,'post.html',{"form":form})
+        messages.success(request,('picture posted'))
+    return render(request,'post.html',{"form":form,"profile":profile})
+
+        
 
 def comment(request):
     comment = comment.objects.all()
@@ -68,3 +71,16 @@ def comment(request):
 
 # def Likes(request,pk):
 #     post = get_object_or_404(Image,id)
+
+def search_results(request):
+
+    if 'username' in request.GET and request.GET["username"]:
+        search_term = request.GET.get("username")
+        searched_username = Username.search_by_name(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"usernames": searched_usernames})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})
