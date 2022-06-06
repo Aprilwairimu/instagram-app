@@ -5,10 +5,8 @@ from django.db import models
 class Image(models.Model):
     image = models.ImageField (null=False, blank=False)
     image_name = models.CharField(max_length=100, null=False, blank=False)
-    image_caption = models.ImageField (null=False, blank=False)
-    # profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
-    likes = models.ImageField (null=False, blank=False)
-    comments = models.CharField(max_length=100, null=False, blank=False)
+    image_caption = models.CharField (max_length=100,null=False, blank=False)
+    
 
     def save_image(self):
         self.save()
@@ -40,6 +38,10 @@ class Profile(models.Model):
 class Comment(models.Model):
     comment = models.CharField(max_length=100, null=False, blank=False)
     image = models.ForeignKey(Image,on_delete=models.CASCADE,null=False, blank=False )
+
+class Likes(models.Model):
+    user = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    image = models.ForeignKey(Image,on_delete=models.CASCADE)
 
     # @classmethod
     # def search_by_name(cls,search_term):

@@ -17,7 +17,7 @@ def register(request):
         if form.is_valid():
             form.save()
 
-        return redirect("/home")
+        return redirect("/login")
     else:
         form = RegisterForm()
     return render(request,'register/register.html', {"form":form})
@@ -48,6 +48,15 @@ def profile(request):
             messages.success(request,('picture posted'))
             return render(request,'post.html',{"form":form})
 
+def post_pic(request):
+    form = UploadImageForm(request.POST,request.FILES)
+    profile = profile.objects.all()
+    if request.method =='POST':
+        if form.is_valid():
+            form.save()
+            messages.success(request,('picture posted'))
+            return render(request,'post.html',{"form":form})
+
 def comment(request):
     comment = comment.objects.all()
     return render(request.POST,request.FILES)
@@ -57,4 +66,5 @@ def comment(request):
             messages.success(request,('comment posted'))
             return render(request,'home.html',{"post":post})
 
-
+# def Likes(request,pk):
+#     post = get_object_or_404(Image,id)
