@@ -13,7 +13,6 @@ urlpatterns=[
     path('profile/',views.profile, name='profile',),
     path('comment/<str:pk>/', views.comment, name='comment'),
     path('image/<pk>/',views.ViewImage, name='image',),
-    path('like/<str:pk>/', views.like, name='like_post'),
     path('search/',views.search_results, name='search',),
     
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

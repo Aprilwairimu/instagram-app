@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 
@@ -23,6 +25,7 @@ class Profile(models.Model):
     profile =  models.ImageField (null=True, blank=True)
     Bio = models.TextField(max_length=100, null=True, blank=True)
 
+
 # @receiver(post_save, sender=User)
 # def update_user_profile(sender, instance, created, **kwargs):
 #     if created:
@@ -44,13 +47,10 @@ class Comment(models.Model):
     author = models.CharField(max_length=100,null=True)
     comment = models.CharField(max_length=100, null=True, blank=True)
     image = models.ForeignKey(Image,on_delete=models.CASCADE,null=True, blank=True)
-
-class Likes(models.Model):
-    user = models.ForeignKey(Profile,on_delete=models.CASCADE)
-    image = models.ForeignKey(Image,on_delete=models.CASCADE)
-
-    def total_likes(self):
-        return self.likes.count()
+    
+class Follow(models.Model):
+    follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name='follower')
+    following= models.ForeignKey(User, on_delete=models.CASCADE, related_name='following')
 
     @classmethod
     def search_by_username(cls,search_term):

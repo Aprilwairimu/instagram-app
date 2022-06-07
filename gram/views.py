@@ -3,6 +3,7 @@ from django.http  import HttpResponse,Http404
 from .forms import RegisterForm,LoginForm,UploadImageForm,CommentForm
 from urllib import request
 from .models import *
+from django.contrib.auth import authenticate,login,logout
 # Create your views here.
 
 def home(request):
@@ -24,7 +25,7 @@ def register(request):
         if form.is_valid():
             form.save()
 
-        return redirect("/login")
+        return redirect("login")
     else:
         form = RegisterForm()
     return render(request,'register/register.html', {"form":form})
@@ -36,7 +37,7 @@ def login(request):
         if form.is_valid():
             username=form.cleaned_data['email']
             password=form.cleaned_data['password']
-            user=authenticate(request,username=usern,password=passw)
+            user=authenticate(request,username=username,password=password)
             if user is not None:
                 login(request,user)
                 return redirect('home')
@@ -80,13 +81,6 @@ def comment(request):
             form.save()
             messages.success(request,('comment posted'))
             return render(request,'home.html',{"post":post})
-
-def like(request, pk):
-    post = get_object_or_404(Image, id=request.GET.get('post_id'))
-    post.Likes.add(request.user)   
-
-    return HttpResponseRedirect(reverse('view', args=[str(pk)]))
-
 
 def search_results(request):
 
