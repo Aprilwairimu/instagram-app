@@ -44,6 +44,12 @@ class Follow(models.Model):
     follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name='follower')
     following= models.ForeignKey(User, on_delete=models.CASCADE, related_name='following')
 
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_likes')
+    post = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_likes')
+
+
+
     @classmethod
     def search_by_username(cls,search_term):
         gram = cls.objects.filter(username__icontains=search_term)
