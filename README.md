@@ -2,7 +2,7 @@
 
 ## PROJECT PREVIEW
 
-![INSTAGRAM APP](./app/static/images/Blog%20screenshot.png)
+![INSTAGRAM APP](./static/images/gram.png)
 
 
 ### PROJECT DESCRIPTION

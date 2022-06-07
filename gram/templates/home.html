@@ -3,21 +3,22 @@
 
 {% block content %}
 <div class="home">
-  <div class="card " style="width: 18rem; height: 18rem;">
+  <div class="card mb-3" style="width: 38rem; height: 20rem;">
     {% for post in posts%}
     {%if post.image%}
-    <img style="width: 18rem; height: 18rem;" src="{{post.image.url}}" alt="image">
+    <img style="width: 38rem; height: 20rem;" src="{{post.image.url}}" alt="image">
     {%endif%}
     <div class="card-body">
       <h5 class="card-title">{{post.image_name}}</h5>
       <p>{{post.image_caption}}
       <p><i class="fa-solid fa-circle-heart"></i></p>
       <p>{{post.date_posted}}</p>
+      <p>{{post.comment}}</p>
+      <button type="button" class="btn btn-primary btn-sm">Follow</button>
     </div>
-    <button type="button" class="btn btn-primary btn-sm">Follow</button>
+    
   </div>
 </div>
-
   
 {% endfor%}
 {% endblock%}

@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="form">
-    <h1>Post</h1>
+    <h1><i class="fa-solid fa-octagon-plus"></i>Post</h1>
     <div>
         <form action="{% url 'post' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}

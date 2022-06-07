@@ -25,14 +25,6 @@ class Profile(models.Model):
     profile =  models.ImageField (null=True, blank=True)
     Bio = models.TextField(max_length=100, null=True, blank=True)
 
-
-# @receiver(post_save, sender=User)
-# def update_user_profile(sender, instance, created, **kwargs):
-#     if created:
-#         UserProfile.objects.create(user=instance)
-#     instance.profile.save()
-    # def__str__(self):
-    #     return self.name
         
     def save_profile(self):
         self.save()
