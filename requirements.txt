@@ -1,7 +1,15 @@
 asgiref==3.5.2
+certifi==2022.5.18.1
+charset-normalizer==2.0.12
 confusable-homoglyphs==3.2.0
 Django==4.0.5
 django-bootstrap==0.2.4
-django-registration==2.4.1
+django-crispy-forms==1.14.0
+django-registration==3.3
+idna==3.3
+Pillow==9.1.1
+psycopg2==2.9.3
 pytz==2022.1
+requests==2.27.1
 sqlparse==0.4.2
+urllib3==1.26.9
